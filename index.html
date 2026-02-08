@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: white;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* BACKGROUND IMAGE */
+.bg {
+  position: fixed;
+  inset: 0;
+  background: url("background.jpg") center / cover no-repeat;
+  z-index: -2;
+}
+
+/* HEADER */
+h1 {
+  margin-top: 30px;
+  font-size: 2.2rem;
+}
+
+.name {
+  font-size: 3rem;
+  animation: bounce 1.2s infinite;
+  color: crimson;
+  position: relative;
+  z-index: 20;
+  text-shadow: 0 0 10px hotpink, 0 0 20px purple;
+}
+
+}
+
+@keyframes bounce {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+
+/* BODY TEXT */
+#text {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-family: 'Lobster', cursive;
+  animation: colorShift 4s infinite alternate;
+  transition: opacity 1s;
+}
+
+@keyframes colorShift {
+  0% { color: red; }
+  50% { color: hotpink; }
+  100% { color: purple; }
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+button {
+  padding: 18px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+}
+#tapBtn {
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  border-radius: 10px;
+  background: #ddd;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#yesBtn {
+  background: linear-gradient(#4CAF50, #2e7d32);
+  color: white;
+}
+
+#noBtn {
+  background: linear-gradient(#f44336, #b71c1c);
+  color: white;
+}
+
+/* COUNTDOWN */
+#countdown {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: purple;
+}
+
+#countdown {
+  animation: rainbowPulse 1s infinite;
+}
+
+
+/* FLOATING HEARTS */
+.heart {
+  position: fixed;
+  bottom: -80px;
+  font-size: 44px;
+  color: red;
+  z-index: 30;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* CONFETTI */
+.confetti {
+  position: fixed;
+  top: -20px;
+  width: 12px;
+  height: 12px;
+  z-index: 100;
+  animation: confettiFall 2.5s linear forwards;
+}
+
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* BOMB */
+#bomb {
+  display: none;
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+/* VIDEO */
+#video {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 9999;
+  opacity: 0;
+  background: black;
+  transition: opacity 1.5s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<h1 class="question">
+Having a friend who thinks of you is the best thing in your life 😊😊, happy valentines Mary
+</h1>
+
+
+<div class="name">NGISHY🥰 </div>
+
+<div id="text">
+I’ve been trying to find the words to say, How you manage to brighten—and ruin—my day. You walk into a room with that effortless grace, Thenyou start talking 🤦and just take up the space. It’s a talent, really, how you’re so incredibly bright, Yet you still can’t get the simplest directions right.😂😂👀
+
+You’ve got this laugh that could wake up the dead, And a thousand weird thoughts spinning ‘round in your head. You’re stubborn and twice as loud, The kind of person who stands out in a crowd— Mostly because you’re probably causing a scene, But all in all your a lovely disaster.
+
+I’ve noticed how you listen when the world gets too much, And how things seem to mend at your very first touch. You have a heart but mine is bigger😎, And a way of making life feel far less intense. But let’s be real, you’re a complete pain in the neck, Leaving my patience and my sanity a total wreck.
+
+You’re the first one I call when I have news to share, Even if you answer with that "I don't really care" stare. You’re sharp, you’re witty, and you’re slightly insane, A constant, beautiful, rattling ache in my brain. I’d tell you you’re special, but I don’t want it going to your head, Since it’s already inflated enough, as I’ve often said.
+
+So here’s to the girl who is far too much to handle, Who holds a blowtorch when I only asked for a candle. You’re annoying, you’re brilliant, and you’re one of a kind, The most wonderful headache I ever did find. Don't get used to the praise; it’s a one-time deal, But I suppose you're alright—if we're being for real. 
+   From one enemy to another… I  hate you😂😂
+    
+
+
+</div>
+
+<div class="buttons">
+  <button id="yesBtn">😊 YES</button>
+  <button id="noBtn">😠 NO</button>
+  <button id="tapBtn">tap</button>
+</div>
+
+
+<div id="countdown"></div>
+
+<div id="bomb">💣 <span id="bombTimer">40</span>s</div>
+</div>
+
+<video id="video" controls>
+  <source src="snaptik_7558076391539985686_v3.mp4" type="video/mp4">
+</video>
+
+<audio id="music2">
+  <source src="carry-you-home.mp3">
+</audio>
+
+<script>
+/* HEARTS */
+let heartSpeed = 9;
+function createHeart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random()*100+"vw";
+  h.style.animationDuration = heartSpeed + Math.random()*3 + "s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(), 12000);
+}
+setInterval(createHeart, 180);
+
+/* CONFETTI */
+function confettiBoom() {
+  for (let i = 0; i < 350; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = `hsl(${Math.random() * 360},100%,50%)`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
+  }
+}
+
+
+/* COUNTDOWN */
+function updateCountdown() {
+  const now = new Date();
+  let year = now.getFullYear();
+
+  // February = month 1
+  let valentines = new Date(year, 1, 14, 0, 0, 0);
+
+  // If already passed, use next year
+  if (now > valentines) {
+    valentines = new Date(year + 1, 1, 14, 0, 0, 0);
+  }
+
+  const diff = valentines - now;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  const cd = document.getElementById("countdown");
+
+  cd.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+  // Color changes every second
+  const colors = ["pink", "purple", "orange", "red", "violet"];
+  cd.style.color = colors[seconds % colors.length];
+}
+
+/* 🔴 THIS PART MUST EXIST */
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* BUTTON LOGIC */
+let noCount=0;
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const tapBtn = document.getElementById("tapBtn");
+
+tapBtn.onclick = () => {
+  const music = document.getElementById("music2");
+  music.currentTime = 0;
+  music.play();
+  tapBtn.remove(); // disappears after tap
+};
+let bombSeconds = 40;
+let bombInterval;
+noBtn.onclick=()=>{
+  navigator.vibrate(200);
+  noCount++;
+  noBtn.style.transform=`scale(${1-noCount*0.2})`;
+  yesBtn.style.transform=`scale(${1+noCount*0.3})`;
+  if(noCount===1) noBtn.innerText="🙂 NO";
+  if(noCount===2) noBtn.innerText="🚶 NO";
+  if(noCount===3){ noBtn.innerText="😭 NO"; setTimeout(()=>noBtn.remove(),300); }
+};
+
+yesBtn.onclick=()=>{
+  navigator.vibrate(300);
+  confettiBoom();
+  heartSpeed=4;
+  document.querySelector(".buttons").remove();
+
+  setTimeout(()=>{
+    document.getElementById("text").style.opacity=0;
+    setTimeout(()=>{
+      document.getElementById("text").innerText=
+`Wherever I am, there’s always you, There’s always you and me. Whatever I do, she wants to do, "Where are you going today?" says Mary: "Well, that’s very odd ’cos I was too. Let’s go together," says Mary, says she. "Let’s go together," says Mary.
+"What’s twice eleven?" I said to Mary. ("Twice what?" said Mary to me.) "I think it ought to be twenty-two." "Just what I think myself," said Mary. "It wasn’t an easy sum to do, But that’s what it is," said Mary, says she. "That’s what it is," said Mary.
+"Let’s look for dragons," I said to Mary. "Yes, let’s," said Mary to me. We climbed the hill until we were high. "It’s a long way up," said Mary to the sky. "Shall we stop and rest? "But I wasn’t asleep," said Mary, says she. "I wasn’t asleep," said Mary.
+"Let’s go to the town," I said to Mary. "I want as well," said Mary to me. "We’ll seek for a shop in the middle of town, And we’ll buy us a hat with a beautiful crown." "We’ll buy us a coat with a button of brown." "We’ll buy us a feather," said Mary, says she. "We’ll buy us a feather," said Mary.
+So wherever I am, there’s always Mary, There’s always Mary and me. "What would I do?" I said to Mary, "If it wasn’t for you," and Mary said: "True! It isn’t much fun for One, but Two Can stick together," says Mary, says she. "That’s how it is," says Mary.
+ From: Costa to Mary
+
+`;
+      document.getElementById("text").style.opacity=1;
+    },1000);
+  },1000);
+
+  // Show bomb
+const bomb = document.getElementById("bomb");
+const bombTimer = document.getElementById("bombTimer");
+
+bombSeconds = 40;
+bombTimer.innerText = bombSeconds;
+bomb.style.display = "block";
+
+// Start visible countdown
+bombInterval = setInterval(() => {
+  bombSeconds--;
+  bombTimer.innerText = bombSeconds;
+
+  if (bombSeconds <= 0) {
+    clearInterval(bombInterval);
+
+    // 💥 BOMB EXPLODES
+    bomb.style.display = "none";
+    confettiBoom(); // explosion confetti
+
+    // 🛑 STOP AUDIO COMPLETELY
+const music = document.getElementById("music2");
+music.pause();
+music.currentTime = 0;
+
+// 🎥 FULLSCREEN VIDEO TAKEOVER
+const v = document.getElementById("video");
+v.style.display = "block";
+v.muted = false;
+
+// Force fullscreen on all devices
+if (v.requestFullscreen) {
+  v.requestFullscreen();
+} else if (v.webkitRequestFullscreen) {
+  v.webkitRequestFullscreen();
+} else if (v.msRequestFullscreen) {
+  v.msRequestFullscreen();
+}
+
+v.play();
+setTimeout(() => v.style.opacity = 1, 100);
+setTimeout(() => v.style.opacity = 1, 100);
+  }
+}, 1000);
+
+};
+</script>
+
+</body>
+</html>
